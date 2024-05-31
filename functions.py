@@ -16,14 +16,14 @@
 
 
 def mapear_lista(procesadora, lista: list) -> list:
-    """ mapea una lista de diccionarios a una lista de tuplas
+    """ Recorre una lista de diccionarios y devuelve una lista de tuplas con el resultado de la llamada a la función
 
     Args:
-        procesadora (_type_): pasamos la funcion lambda
-        lista (list): pasamos la lista de diccionarios donde buscar
+        procesadora (_type_): pasamos la funcion lambda.
+        lista (list): pasamos la lista de diccionarios donde buscar.
 
     Returns:
-        list: _description_
+        list: Nueva lista de tuplas.
     """
     lista_retorno = []
     for elemento in lista:
@@ -32,6 +32,8 @@ def mapear_lista(procesadora, lista: list) -> list:
         except:
             TypeError("No se puede procesar un objeto que no es lista")
     return lista_retorno
+
+
 
 def mostrar_lista_tupla(lista:list) -> None:
     """Imprime una lista de tuplas
@@ -45,29 +47,23 @@ def mostrar_lista_tupla(lista:list) -> None:
         print()
 
 
-# def superheroe_alturas_limites(lista:list, mas_alto=False) -> list:
-#     """Retorna una tupla con el superhéroe mas alto y el superhéroe mas bajo"""
-#     flag = False
-#     altura_encontrada = 0
-#     superheroe_encontrado = {}
-
-#     for superheroe in lista:
-#         if mas_alto == True:
-#            if flag == False or float(superheroe["altura"]) > float(altura_encontrada):
-#                altura_encontrada = float(superheroe["altura"])
-#                superheroe_encontrado = superheroe
-#                flag = True
-#         else:
-#             if flag == False or float(superheroe["altura"]) < float(altura_encontrada):
-#                 altura_encontrada = float(superheroe["altura"])
-#                 superheroe_encontrado = superheroe
-#                 flag = True
-
-#     return superheroe_encontrado
-
-
 def obtener_mayor_menor(clave, lista:list, mas_alto=False) -> list:
-    """Retorna una tupla con el superhéroe mas alto y el superhéroe mas bajo"""
+    """Obtengo el valor más alto o más bajo de la clave de un diccionario
+
+    Args:
+        clave (_type_): Ingreso la clave a buscar.
+        lista (list): Ingreso la lista de diccionarios.
+        mas_alto (bool, optional): Si es TRUE busca el valor mas alto.
+
+    Raises:
+        ValueError: Error. Lista vacia.
+
+    Returns:
+        list: una lista con SOLO el superheroe con el valor max o min.
+    """
+    if len(lista) == 0:
+        raise ValueError("Error. Lista vacia")
+
     flag = False
     numero_inicial = 0
     superheroe_encontrado = {}
