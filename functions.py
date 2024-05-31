@@ -45,30 +45,46 @@ def mostrar_lista_tupla(lista:list) -> None:
         print()
 
 
-def superheroe_alturas_limites(lista:list, mas_alto=False) -> list:
+# def superheroe_alturas_limites(lista:list, mas_alto=False) -> list:
+#     """Retorna una tupla con el superhéroe mas alto y el superhéroe mas bajo"""
+#     flag = False
+#     altura_encontrada = 0
+#     superheroe_encontrado = {}
+
+#     for superheroe in lista:
+#         if mas_alto == True:
+#            if flag == False or float(superheroe["altura"]) > float(altura_encontrada):
+#                altura_encontrada = float(superheroe["altura"])
+#                superheroe_encontrado = superheroe
+#                flag = True
+#         else:
+#             if flag == False or float(superheroe["altura"]) < float(altura_encontrada):
+#                 altura_encontrada = float(superheroe["altura"])
+#                 superheroe_encontrado = superheroe
+#                 flag = True
+
+#     return superheroe_encontrado
+
+
+def obtener_mayor_menor(clave, lista:list, mas_alto=False) -> list:
     """Retorna una tupla con el superhéroe mas alto y el superhéroe mas bajo"""
     flag = False
-    nombre_encontrado = ""
-    altura_encontrada = 0
-    tupla_superheroe_encontrado = []
+    numero_inicial = 0
+    superheroe_encontrado = {}
 
     for superheroe in lista:
         if mas_alto == True:
-           if flag == False or float(superheroe["altura"]) > float(altura_encontrada):
-               altura_encontrada = float(superheroe["altura"])
-               nombre_encontrado = superheroe["nombre"]
+           if flag == False or float(superheroe[clave]) > float(numero_inicial):
+               numero_inicial = float(superheroe[clave])
+               superheroe_encontrado = superheroe
                flag = True
         else:
-            if flag == False or float(superheroe["altura"]) < float(altura_encontrada):
-                altura_encontrada = float(superheroe["altura"])
-                nombre_encontrado = superheroe["nombre"]
+            if flag == False or float(superheroe[clave]) < float(numero_inicial):
+                numero_inicial = float(superheroe[clave])
+                superheroe_encontrado = superheroe
                 flag = True
 
-
-    tupla_superheroe_encontrado.append(nombre_encontrado)
-    tupla_superheroe_encontrado.append(altura_encontrada)
-    return tupla_superheroe_encontrado
-
+    return superheroe_encontrado
 
 
 def sumar_lista(lista:list)->int:
