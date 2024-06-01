@@ -1,3 +1,12 @@
+from os import system
+
+def limpiar_consola():
+    system('cls')
+
+def pausar():
+    print()
+    system('pause')
+
 def mapear_lista(procesadora, lista: list) -> list:
     """ Recorre una lista de diccionarios y devuelve una lista de tuplas con el resultado de la llamada a la función
 
@@ -78,7 +87,6 @@ def calcular_promedio(lista:list) -> float:
     else:
         return round(sumar_lista(lista) / len(lista), 2)
     
-
 
 def obtener_cada_elemento_disponible(lista: list) -> list:
     """Esto es para que no se repitan las elementos de una lista
