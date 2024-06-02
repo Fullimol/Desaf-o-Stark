@@ -3,9 +3,15 @@ from os import system
 def limpiar_consola():
     system('cls')
 
-def pausar():
+def pausar_programa():
     print()
     system('pause')
+
+def verificar_lista(lista:list) -> None:
+    if type(lista) != list:
+        raise TypeError("Error. No se puede procesar un objeto que no es lista")
+    elif len(lista) == 0:
+        raise ValueError("Error. Lista vacia")
 
 def mapear_lista(procesadora, lista: list) -> list:
     """ Recorre una lista de diccionarios y devuelve una lista de tuplas con el resultado de la llamada a la función
@@ -53,8 +59,7 @@ def obtener_mayor_menor(clave, lista:list, mas_alto=False) -> list:
     Returns:
         list: una lista con SOLO el superheroe con el valor max o min.
     """
-    if len(lista) == 0:
-        raise ValueError("Error. Lista vacia")
+    verificar_lista(lista)
 
     flag = False
     numero_inicial = 0
@@ -82,25 +87,25 @@ def sumar_lista(lista:list)->int:
     return suma
 
 def calcular_promedio(lista:list) -> float:
-    if len(lista) == 0:
-        raise ValueError("Error. Lista vacia")
-    else:
-        return round(sumar_lista(lista) / len(lista), 2)
-    
+    verificar_lista(lista)
+    return round(sumar_lista(lista) / len(lista), 2)
+
 
 def obtener_cada_elemento_disponible(lista: list) -> list:
-    """Esto es para que no se repitan las elementos de una lista
+    """Esto es para que no se repitan las elementos de una lista.
 
     Args:
-        lista (list): pasamos la lista
+        lista (list): pasamos la lista.
 
     Returns:
-        list: la lista sin repeticiones
+        list: una lista de todos los elementos sin repeticiones.
     """
+    verificar_lista(lista)
+
     nueva_lista = []
     for elemento in lista:
-        if elemento not in nueva_lista:
-            nueva_lista.append(elemento)
+            if elemento not in nueva_lista:
+                nueva_lista.append(elemento)
     return nueva_lista
 
 
@@ -115,8 +120,10 @@ def filtrar_lista(key, lista, elemento_buscado) -> list:
     Returns:
         list: la lista filtrada
     """
+    verificar_lista(lista)
+
     lista_filtrada = []
-    for superheroe in lista:
-        if superheroe[key] == elemento_buscado:
-            lista_filtrada.append(superheroe)
+    for elemento in lista:
+        if elemento[key] == elemento_buscado:
+            lista_filtrada.append(elemento)
     return lista_filtrada
