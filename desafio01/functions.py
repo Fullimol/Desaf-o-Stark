@@ -127,3 +127,22 @@ def filtrar_lista(key, lista, elemento_buscado) -> list:
         if elemento[key] == elemento_buscado:
             lista_filtrada.append(elemento)
     return lista_filtrada
+
+
+def agrupar_segun_condicion(lista: list, lista_elemntos: list, clave_buscada: str, clave_a_mostrar: str) -> None:
+    """ Devuelve los nombres agrupados segun cada caracteristica en comun.
+
+    Args:
+        lista (list): Pasamos la lista de diccionarios
+        lista_elemntos (list): Pasamos la lista con las similitudes a agrupar
+        clave_buscada (str): Pasamos la clave del diccionario a buscar
+        clave_a_mostrar (str): Pasamos la clave del diccionario a mostrar por print.
+    """
+    verificar_lista(lista)
+    verificar_lista(lista_elemntos)
+
+    for i in range(len(lista_elemntos)):
+        print(f"\nCOLOR:'{lista_elemntos[i]}':")
+        for el in lista:
+            if el[clave_buscada] == lista_elemntos[i]:
+                print(F"> {el[clave_a_mostrar]}")

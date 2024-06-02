@@ -15,12 +15,21 @@ from functions import *
 # x K. Determinar cuántos superhéroes tienen cada tipo de color de pelo.
 # x L. Determinar cuántos superhéroes tienen cada tipo de inteligencia (En caso de no tener, Inicializarlo con ‘No Tiene’).
 
-# M. Listar todos los superhéroes agrupados por color de ojos.
+# x M. Listar todos los superhéroes agrupados por color de ojos.
 # N. Listar todos los superhéroes agrupados por color de pelo.
 # O. Listar todos los superhéroes agrupados por tipo de inteligencia.
 
+
+
+    
+
+
+
+
+
+
 def menu_funciones():
-    limpiar_consola()
+    # limpiar_consola()
     print(f'\t---- MENU DE FUNCIONES ----')
     print("A. Mostrar nombre de superheroes MASCULINO")
     print("B. Mostrar nombre de superheroes FEMENINOS")
@@ -34,7 +43,7 @@ def menu_funciones():
     print("J. Cantidad CADA tipo de color de OJOS")
     print("K. Cantidad CADA tipo de color de PELO")
     print("L. Cantidad CADA tipo de inteligencia")
-    print("M. (sin hacer)")
+    print("M. Agrupar por color de ojos")
     print("N. (sin hacer)")
     print("O. (sin hacer)")
 
@@ -123,7 +132,10 @@ while True:
                     print(f"La cantidad de inteligencia {elemento} es {len(filtrar_lista('inteligencia', lista_personajes, elemento))}")
             pausar_programa()
         case "M":
-            print("sin hacer")
+            print(f'\n\tAGRUPAR POR COLOR DE OJOS: ')
+            lista_colores_ojos = mapear_lista(lambda super: super["color_ojos"], lista_personajes)  #Obtengo la lista de colores
+            colores_ojos = obtener_cada_elemento_disponible(lista_colores_ojos) #Obtengo la lista de colores sin repetición
+            agrupar_segun_condicion(lista_personajes, colores_ojos, "color_ojos", "nombre")
             pausar_programa()
         case "N":
             print("sin hacer")
