@@ -3,15 +3,44 @@ from os import system
 def limpiar_consola():
     system('cls')
 
+
 def pausar_programa():
     print()
     system('pause')
+
+
+def menu_funciones():
+    limpiar_consola()
+    print(f'\t---- MENU DE FUNCIONES ----')
+    print("A. Mostrar nombre de superheroes MASCULINO")
+    print("B. Mostrar nombre de superheroes FEMENINOS")
+    print("C. MASCULINO más ALTO")
+    print("D. FEMENINO más ALTO")
+    print("E. MASCULINO más BAJO")
+    print("F. FEMENINO más BAJO")
+    print("G. PROMEDIO altura MASCULINO")
+    print("H. PROMEDIO altura FEMENINO")
+    print("I. Identidad M mas alto y F mas baja")
+    print("J. Cantidad CADA tipo de color de OJOS")
+    print("K. Cantidad CADA tipo de color de PELO")
+    print("L. Cantidad CADA tipo de inteligencia")
+    print("M. AGRUPAR por color de OJOS")
+    print("N. AGRUPAR por color de PELO")
+    print("O. AGRUPAR POR tipo de INTELIGENCIA")
+    print("P. Finalizar programa")
+    seleccion =  input(f'\n\tIngrese opcion: ').upper()
+    while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']:
+        print(f'ERROR: OPCION {seleccion} NO VALIDA')
+        seleccion =  input(f'\n\tIngrese opcion: ').upper()
+    return seleccion
+
 
 def verificar_lista(lista:list) -> None:
     if type(lista) != list:
         raise TypeError("Error. No se puede procesar un objeto que no es lista")
     elif len(lista) == 0:
         raise ValueError("Error. Lista vacia")
+
 
 def mapear_lista(procesadora, lista: list) -> list:
     """ Recorre una lista de diccionarios y devuelve una lista de tuplas con el resultado de la llamada a la función
@@ -30,7 +59,6 @@ def mapear_lista(procesadora, lista: list) -> list:
         except:
             TypeError("No se puede procesar un objeto que no es lista")
     return lista_retorno
-
 
 
 def mostrar_lista_tupla(lista:list) -> None:
@@ -60,7 +88,6 @@ def obtener_mayor_menor(clave, lista:list, mas_alto=False) -> list:
         list: una lista con SOLO el superheroe con el valor max o min.
     """
     verificar_lista(lista)
-
     flag = False
     numero_inicial = 0
     superheroe_encontrado = {}
@@ -85,6 +112,7 @@ def sumar_lista(lista:list)->int:
     for numero in lista:
         suma += numero
     return suma
+
 
 def calcular_promedio(lista:list) -> float:
     verificar_lista(lista)
@@ -129,6 +157,22 @@ def filtrar_lista(key, lista, elemento_buscado) -> list:
     return lista_filtrada
 
 
+def crear_lista_con_valores_de_clave(lista: list, clave: str) -> list:
+    """Retorna una lista con los valores de una clave de una lista de diccionarios
+
+    Args:
+        lista (list): Lista de diccionarios donde buscar
+        clave (str): clave para obtener los valores
+
+    Returns:
+        list: nueva lista con los valores de la clave, sin repeticiones
+    """
+    verificar_lista(lista)
+    valores_obtenidos = mapear_lista(lambda super: super[clave], lista) # guardo en una lista cada valor de la clave del diccionario.
+    valores_sin_repeticiones = obtener_cada_elemento_disponible(valores_obtenidos) # creo una lista sin repeticiones de cada dato mapeado.
+    return valores_sin_repeticiones
+
+
 def agrupar_segun_condicion(lista: list, lista_elemntos: list, clave_buscada: str, clave_a_mostrar: str) -> None:
     """ Devuelve los nombres agrupados segun cada caracteristica en comun.
 
@@ -142,7 +186,7 @@ def agrupar_segun_condicion(lista: list, lista_elemntos: list, clave_buscada: st
     verificar_lista(lista_elemntos)
 
     for i in range(len(lista_elemntos)):
-        print(f"\nCOLOR:'{lista_elemntos[i]}':")
+        print(f"\n      ({lista_elemntos[i]})")
         for el in lista:
             if el[clave_buscada] == lista_elemntos[i]:
                 print(F"> {el[clave_a_mostrar]}")
