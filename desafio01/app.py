@@ -18,70 +18,58 @@ from functions import *
 # x N. Listar todos los superhéroes agrupados por color de pelo.
 # x O. Listar todos los superhéroes agrupados por tipo de inteligencia.
 
-
-
-
-
+personajes_masculinos = filtrar_lista("genero", lista_personajes, 'M')
+personajes_femeninos = filtrar_lista("genero", lista_personajes, 'F')
 
 while True:
     match menu_funciones():
-
         case "A":
             print(f'\n\tSUPERHEROES MASCULINOS: ')
-            for super in filtrar_lista("genero", lista_personajes, 'M'):
+            for super in personajes_masculinos:
                 print(super["nombre"])
             pausar_programa()
 
         case "B":
             print(f'\n\tSUPERHEROES FEMENINOS: ')
-            for super in filtrar_lista("genero", lista_personajes, 'F'):
+            for super in personajes_femeninos:
                 print(super["nombre"])
             pausar_programa()
 
         case "C":
-            personajes_masculinos = filtrar_lista("genero", lista_personajes, 'M')
             masculino_mas_alto = obtener_mayor_menor("altura", personajes_masculinos, True)
             print(f'El Masculino mas Alto es: {masculino_mas_alto["nombre"]} con {round(float(masculino_mas_alto["altura"]), 2)}')
             pausar_programa()
 
         case "D":
-            personajes_femeninos = filtrar_lista("genero", lista_personajes, 'F')
             femenino_mas_alto = obtener_mayor_menor("altura", personajes_femeninos, True)
             print(f'El Femenino mas Alto es: {femenino_mas_alto["nombre"]} con {round(float(femenino_mas_alto["altura"]), 2)}')
             pausar_programa()
 
         case "E":
-            personajes_masculinos = filtrar_lista("genero", lista_personajes, 'M')
             masculino_mas_bajo = obtener_mayor_menor("altura", personajes_masculinos, False)
             print(f'El Masculino mas Bajo es: {masculino_mas_bajo["nombre"]} con {round(float(masculino_mas_bajo["altura"]), 2)}')
             pausar_programa()
 
         case "F":
-            personajes_femeninos = filtrar_lista("genero", lista_personajes, 'F')
             femenino_mas_bajo = obtener_mayor_menor("altura", personajes_femeninos, False)
             print(f'El Femenino mas Bajo es: {femenino_mas_bajo["nombre"]} con {round(float(femenino_mas_bajo["altura"]), 2)}')
             pausar_programa()
 
         case "G":
-            personajes_masculinos = filtrar_lista("genero", lista_personajes, 'M')
             mapear_lista(lambda super: (float(super["altura"])), personajes_masculinos)
             promedio = calcular_promedio(mapear_lista(lambda super: (float(super["altura"])), personajes_masculinos))
             print(f'El PROMEDIO de las alturas de MASCULINOS es: {promedio}')
             pausar_programa()
-            
+
         case "H":
-            personajes_femeninos = filtrar_lista("genero", lista_personajes, 'F')
             mapear_lista(lambda super: (float(super["altura"])), personajes_femeninos)
             promedio = calcular_promedio(mapear_lista(lambda super: (float(super["altura"])), personajes_femeninos))
             print(f'El PROMEDIO de las alturas de FEMENINOS es: {promedio}')
             pausar_programa()
 
         case "I":
-            personajes_masculinos = filtrar_lista("genero", lista_personajes, 'M')
             masculino_mas_alto = obtener_mayor_menor("altura", personajes_masculinos, True)
-            personajes_femeninos = filtrar_lista("genero", lista_personajes, 'F')
             femenino_mas_bajo = obtener_mayor_menor("altura", personajes_femeninos, False)
-            
             print(f'El Masculino mas Alto es {masculino_mas_alto["identidad"]} y la Femenina mas Baja es {femenino_mas_bajo["identidad"]}')
             pausar_programa()
 
@@ -108,7 +96,7 @@ while True:
             colores_ojos = crear_lista_con_valores_de_clave(lista_personajes, "color_ojos")
             agrupar_segun_condicion(lista_personajes, colores_ojos, "color_ojos", "nombre")
             pausar_programa()
-            
+
         case "N":
             print(f'\n\tAGRUPAR POR COLOR DE PELO: ')
             colores_pelo = crear_lista_con_valores_de_clave(lista_personajes, "color_pelo")
@@ -120,7 +108,7 @@ while True:
             nivel_inteligencia = crear_lista_con_valores_de_clave(lista_personajes, "inteligencia")
             agrupar_segun_condicion(lista_personajes, nivel_inteligencia, "inteligencia", "nombre")
             pausar_programa()
-        
+
         case "P":
             break
 
