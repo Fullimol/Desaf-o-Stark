@@ -56,13 +56,12 @@ while True:
             pausar_programa()
 
         case "G":
-            mapear_lista(lambda super: (float(super["altura"])), personajes_masculinos)
-            promedio = calcular_promedio(mapear_lista(lambda super: (float(super["altura"])), personajes_masculinos))
+            todas_alturas_masculinos = mapear_lista(lambda super: (float(super["altura"])), personajes_masculinos)
+            promedio = calcular_promedio(todas_alturas_masculinos)
             print(f'El PROMEDIO de las alturas de MASCULINOS es: {promedio}')
             pausar_programa()
 
         case "H":
-            mapear_lista(lambda super: (float(super["altura"])), personajes_femeninos)
             promedio = calcular_promedio(mapear_lista(lambda super: (float(super["altura"])), personajes_femeninos))
             print(f'El PROMEDIO de las alturas de FEMENINOS es: {promedio}')
             pausar_programa()

@@ -187,6 +187,6 @@ def agrupar_segun_condicion(lista: list, lista_elemntos: list, clave_buscada: st
 
     for i in range(len(lista_elemntos)):
         print(f"\n      ({lista_elemntos[i]})")
-        for el in lista:
-            if el[clave_buscada] == lista_elemntos[i]:
-                print(F"> {el[clave_a_mostrar]}")
+        for element in lista:
+            if element[clave_buscada] == lista_elemntos[i]:
+                print(F"> {element[clave_a_mostrar]}")
